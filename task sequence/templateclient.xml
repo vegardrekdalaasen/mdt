@@ -1,0 +1,72 @@
+#Not complete files, only custom actions.
+
+<step type="BDD_RunPowerShellAction" name="Custom script - Highpower" description="" disable="false" continueOnError="true" successCodeList="0 3010">
+<defaultVarList>
+<variable name="ScriptName" property="ScriptName">%Scriptroot%\customscripts\highperformance.ps1</variable>
+<variable name="Parameters" property="Parameters"/>
+<variable name="PackageID" property="PackageID"/>
+</defaultVarList>
+<action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+</step>
+<step type="BDD_RunPowerShellAction" name="Custom script - Before login" description="" disable="false" continueOnError="true" successCodeList="0 3010">
+<defaultVarList>
+<variable name="ScriptName" property="ScriptName">%Scriptroot%\customscripts\beforelogin.ps1</variable>
+<variable name="Parameters" property="Parameters"/>
+<variable name="PackageID" property="PackageID"/>
+</defaultVarList>
+<action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+</step>
+<step type="SMS_TaskSequence_RebootAction" name="Restart computer" description="" disable="false" continueOnError="true" runIn="WinPEandFullOS" successCodeList="0 3010">
+<defaultVarList>
+<variable name="SMSRebootMessage" property="Message"/>
+<variable name="SMSRebootTimeout" property="MessageTimeout">60</variable>
+<variable name="SMSRebootTarget" property="Target"/>
+</defaultVarList>
+<action>smsboot.exe /target:WinPE</action>
+</step>
+<step type="BDD_InstallApplication" name="Custom script - Install Chocolatey" description="" disable="false" continueOnError="true" runIn="WinPEandFullOS" successCodeList="0 3010">
+<defaultVarList>
+<variable name="ApplicationGUID" property="ApplicationGUID">{20510d2a-8859-46dc-81fa-4a280775c1dd}</variable>
+<variable name="ApplicationSuccessCodes" property="ApplicationSuccessCodes">0 3010</variable>
+</defaultVarList>
+<action>cscript.exe "%SCRIPTROOT%\ZTIApplications.wsf"</action>
+</step>
+<step type="SMS_TaskSequence_RebootAction" name="Restart computer" description="" disable="false" continueOnError="true" runIn="WinPEandFullOS" successCodeList="0 3010">
+<defaultVarList>
+<variable name="SMSRebootMessage" property="Message"/>
+<variable name="SMSRebootTimeout" property="MessageTimeout">60</variable>
+<variable name="SMSRebootTarget" property="Target"/>
+</defaultVarList>
+<action>smsboot.exe /target:WinPE</action>
+</step>
+<step type="BDD_InstallApplication" name="Custom script - Install selected programs" description="" disable="false" continueOnError="true" runIn="WinPEandFullOS" successCodeList="0 3010">
+<defaultVarList>
+<variable name="ApplicationGUID" property="ApplicationGUID"/>
+<variable name="ApplicationSuccessCodes" property="ApplicationSuccessCodes">0 3010</variable>
+</defaultVarList>
+<action>cscript.exe "%SCRIPTROOT%\ZTIApplications.wsf"</action>
+</step>
+<step type="SMS_TaskSequence_RebootAction" name="Restart computer" description="" disable="false" continueOnError="true" runIn="WinPEandFullOS" successCodeList="0 3010">
+<defaultVarList>
+<variable name="SMSRebootMessage" property="Message"/>
+<variable name="SMSRebootTimeout" property="MessageTimeout">60</variable>
+<variable name="SMSRebootTarget" property="Target"/>
+</defaultVarList>
+<action>smsboot.exe /target:WinPE</action>
+</step>
+<step type="BDD_RunPowerShellAction" name="Custom script - Copyfile to C:\" description="" disable="false" continueOnError="true" successCodeList="0 3010">
+<defaultVarList>
+<variable name="ScriptName" property="ScriptName">%Scriptroot%\customscripts\copyfile_win11.ps1</variable>
+<variable name="Parameters" property="Parameters"/>
+<variable name="PackageID" property="PackageID"/>
+</defaultVarList>
+<action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+</step>
+<step type="BDD_RunPowerShellAction" name="Custom script - Balancedpower" description="" disable="false" continueOnError="true" successCodeList="0 3010">
+<defaultVarList>
+<variable name="ScriptName" property="ScriptName">%Scriptroot%\customscripts\balancedpower.ps1</variable>
+<variable name="Parameters" property="Parameters"/>
+<variable name="PackageID" property="PackageID"/>
+</defaultVarList>
+<action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+</step>
